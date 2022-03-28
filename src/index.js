@@ -1,11 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
+//components
 import App from "./App";
+//Apollo
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+//styles
 import { GlobalStyle } from "./GlobalStyles";
 
 //connect react with with the GrapghQL endpoint
-
 const client = new ApolloClient({
   uri: "http://localhost:4000/",
   cache: new InMemoryCache(),
