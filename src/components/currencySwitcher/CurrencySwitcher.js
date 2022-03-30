@@ -61,8 +61,8 @@ class CurrencySwitcher extends Component {
     const { currencySymbol } = this.props;
     return (
       <DropdownMenu ref={this.menuref} role="menu">
+        <span>{currencySymbol}</span>
         <ToggleButton onClick={this.toggle}>
-          <span>{currencySymbol}</span>
           {isOpen ? (
             <img src={closeArrow} alt="close button" />
           ) : (

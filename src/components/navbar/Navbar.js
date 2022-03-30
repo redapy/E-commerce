@@ -1,7 +1,12 @@
 import { Component } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+//components
 import CurrencySwitcher from "../currencySwitcher/CurrencySwitcher";
-import { Nav, NavLinks, Wrapper } from "./Navbar.styles";
+//styles
+import { CartIcon, Logo, Nav, NavLinks, Side, Wrapper } from "./Navbar.styles";
+//icons
+import logo from "../../assests/logo.svg";
+import cartIcon from "../../assests/cartIcon.svg";
 
 class Navbar extends Component {
   render() {
@@ -10,17 +15,25 @@ class Navbar extends Component {
         <Nav>
           <NavLinks>
             <li>
-              <Link to="/categories/all">all</Link>
+              <NavLink to="/categories/all">all</NavLink>
             </li>
             <li>
-              <Link to="/categories/clothes">clothes</Link>
+              <NavLink to="/categories/clothes">clothes</NavLink>
             </li>
             <li>
-              <Link to="/categories/tech">tech</Link>
+              <NavLink to="/categories/tech">tech</NavLink>
             </li>
           </NavLinks>
-          <CurrencySwitcher />
         </Nav>
+        <Logo>
+          <img src={logo} alt="logo icon" />
+        </Logo>
+        <Side>
+          <CurrencySwitcher />
+          <CartIcon>
+            <img src={cartIcon} alt="cart icon" />
+          </CartIcon>
+        </Side>
       </Wrapper>
     );
   }
