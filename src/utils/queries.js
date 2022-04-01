@@ -8,3 +8,22 @@ export const GET_CURRENCIES = gql`
     }
   }
 `;
+
+export const GET_CATEGORY_PRODUCTS = gql`
+  query ($input: CategoryInput!) {
+    category(input: $input) {
+      products {
+        id
+        name
+        inStock
+        gallery
+        prices {
+          currency {
+            symbol
+          }
+          amount
+        }
+      }
+    }
+  }
+`;

@@ -1,15 +1,18 @@
 import { Component } from "react";
 // react-router
 import { withRouter } from "react-router-dom";
+//components
+import ProductsList from "./ProducstList";
 //styles
-import { Wrapper } from "./CategoryPage.styles";
+import { Header, Wrapper } from "./CategoryPage.styles";
 
 class ProductsPage extends Component {
   render() {
     const categoryName = this.props.match.params.title;
     return (
       <Wrapper>
-        <h1>{categoryName}</h1>
+        <Header>{categoryName}</Header>
+        <ProductsList categoryName={categoryName} />
       </Wrapper>
     );
   }

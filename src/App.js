@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import CartPage from "./pages/cartPage/CartPage";
 //components
 import Navbar from "./components/navbar/Navbar";
-import CategoryPage from "./pages/poductsPage/CategoryPage";
+import CategoryPage from "./pages/categoryPage/CategoryPage";
 import ProductDescription from "./pages/productDescription/ProductDescription";
 
 class App extends Component {
