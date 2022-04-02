@@ -29,7 +29,9 @@ class ProducstList extends Component {
                     <img src={cart} alt="add to cart button" />
                   </CartIcon>
                 </ProductImage>
-                <Link to={`/product/${product.id}`}>{product.name}</Link>
+                <Link to={`/product/${product.id}`}>
+                  {product.brand} {product.name}
+                </Link>
                 <ProductPrice prices={product.prices} />
               </Card>
             ))}
