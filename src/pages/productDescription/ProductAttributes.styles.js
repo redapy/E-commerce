@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: flex-start;
 `;
-export const Attribute = styled.div`
+export const Attribute = styled.form`
   width: 75%;
   display: flex;
   flex-direction: column;
@@ -26,22 +26,23 @@ export const AttributeItems = styled.div`
   justify-content: start;
 `;
 
-export const Item = styled.button`
-  border: 1px solid #a6a6a6;
-  background-color: var(--white);
+export const Item = styled.label`
   padding: 20px;
   margin: 0 15px;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-  cursor: pointer;
   font-family: "Source Sans Pro";
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
-  background-color: ${(props) => props.color};
-  :first-child {
-    margin-left: 0;
-  }
-  :last-child {
-    margin-right: 0;
+  cursor: pointer;
+  background-color: ${(props) => (props.checked ? "black" : "var(--white)")};
+  color: ${(props) => (props.checked ? "var(--white)" : "black")};
+  border: ${({ checked, swatch }) =>
+    checked && swatch ? "3px dashed gray" : "1px solid #a6a6a6"};
+
+  input[type="radio"] {
+    opacity: 0;
+    width: 0;
+    position: fixed;
   }
 `;
