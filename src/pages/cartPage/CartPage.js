@@ -3,6 +3,7 @@ import { Component } from "react";
 import { connect } from "react-redux";
 //components
 import ProductPrice from "../../components/productPrice/ProductPrice";
+import ProductQuantiy from "../../components/productQuantity/ProductQuantiy";
 //styles
 import {
   Header,
@@ -37,6 +38,7 @@ class CartPage extends Component {
                     ))}
                   </SelectedAttributes>
                 </ItemDetails>
+                <ProductQuantiy quantity={item.quantity} id={item.id} />
               </Item>
             ))
           ) : (
