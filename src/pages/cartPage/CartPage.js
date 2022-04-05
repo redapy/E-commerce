@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 //components
 import ProductPrice from "../../components/productPrice/ProductPrice";
 import ProductQuantiy from "../../components/productQuantity/ProductQuantiy";
+import Carousel from "./Carousel";
 //styles
 import {
   Header,
@@ -19,6 +20,7 @@ import {
 class CartPage extends Component {
   render() {
     const { items } = this.props;
+    console.log(items);
     return (
       <Wrapper>
         <Header>cart</Header>
@@ -39,6 +41,7 @@ class CartPage extends Component {
                   </SelectedAttributes>
                 </ItemDetails>
                 <ProductQuantiy quantity={item.quantity} id={item.id} />
+                <Carousel images={item.gallery} />
               </Item>
             ))
           ) : (
