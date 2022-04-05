@@ -1,7 +1,6 @@
 import { Component } from "react";
 //redux
 import { connect } from "react-redux";
-import { compose } from "redux";
 class ProductPrice extends Component {
   render() {
     // Get the selected currency from the redux store
