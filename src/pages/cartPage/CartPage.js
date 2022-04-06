@@ -29,14 +29,17 @@ class CartPage extends Component {
             items.map((item) => (
               <Item key={item.id}>
                 <ItemDetails>
-                  <ProductBrand>{item.barnd}</ProductBrand>
+                  <ProductBrand>{item.brand}</ProductBrand>
                   <ProductName>{item.name}</ProductName>
                   <ProductPrice prices={item.price} />
                   <SelectedAttributes>
                     {Object.keys(item.attributes).map((attrKey) => (
                       <li
                         key={attrKey}
-                      >{`${attrKey}: ${item.attributes[attrKey]}`}</li>
+                        style={{ background: item.attributes[attrKey] }}
+                      >
+                        {attrKey === "Color" ? "" : item.attributes[attrKey]}
+                      </li>
                     ))}
                   </SelectedAttributes>
                 </ItemDetails>

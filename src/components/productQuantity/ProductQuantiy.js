@@ -14,8 +14,10 @@ class ProductQuantiy extends Component {
     };
 
     const decreaseQuantity = () => {
-      const newQuantity = quantity - 1;
-      dispatch(updateQuantity({ quantity: newQuantity, id }));
+      if (quantity > 0) {
+        const newQuantity = quantity - 1;
+        dispatch(updateQuantity({ quantity: newQuantity, id }));
+      }
     };
     return (
       <Warapper>

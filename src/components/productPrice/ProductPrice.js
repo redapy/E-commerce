@@ -1,6 +1,8 @@
 import { Component } from "react";
 //redux
 import { connect } from "react-redux";
+//styles
+import { Price } from "./ProductPrice.styles";
 class ProductPrice extends Component {
   render() {
     // Get the selected currency from the redux store
@@ -14,9 +16,9 @@ class ProductPrice extends Component {
       return amount;
     };
     return (
-      <p>
+      <Price>
         {currencySymbol} {getAmount(prices, currencySymbol)}
-      </p>
+      </Price>
     );
   }
 }
