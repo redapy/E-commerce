@@ -35,16 +35,21 @@ class Carousel extends Component {
 
   render() {
     const { index } = this.state;
-    const image = this.props.images[index];
+    const { images, overlay } = this.props;
+    const image = images[index];
     return (
       <Wrapper>
-        <Arrow onClick={this.moveLeft} left>
-          <img src={leftArrow} alt="left arrow" />
-        </Arrow>
-        <Image src={image} alt="product preview" />
-        <Arrow onClick={this.moveRight} right>
-          <img src={rightArrow} alt="right arrow" />
-        </Arrow>
+        {!overlay && (
+          <Arrow onClick={this.moveLeft} left>
+            <img src={leftArrow} alt="left arrow" />
+          </Arrow>
+        )}
+        <Image src={image} alt="product preview" overlay={overlay} />
+        {!overlay && (
+          <Arrow onClick={this.moveRight} right>
+            <img src={rightArrow} alt="right arrow" />
+          </Arrow>
+        )}
       </Wrapper>
     );
   }

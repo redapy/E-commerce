@@ -56,7 +56,14 @@ export const Side = styled.div`
   align-items: center;
 `;
 
-export const CartIcon = styled.div`
-  width: 20px;
-  height: 20px;
+export const CartIcon = styled.button`
+  position: relative;
+  border: none;
+  background-color: transparent;
+  width: 30px;
+  height: 30px;
+  image {
+    width: 20px;
+    height: 20px;
+  }
 `;

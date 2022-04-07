@@ -23,6 +23,6 @@ export const Arrow = styled.button`
 
 export const Image = styled.img`
   width: 100%;
-  height: 180px;
+  height: ${(props) => (props.overlay ? "" : "180px")};
   object-fit: contain;
 `;

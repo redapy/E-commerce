@@ -6,24 +6,30 @@ import { Button, Quantity, Warapper } from "./ProductQuantiy.styles";
 
 class ProductQuantiy extends Component {
   render() {
-    const { quantity, id, dispatch } = this.props;
+    //destructre variables from the props
+    const { quantity, id, dispatch, overlay } = this.props;
 
+    // function to increase the product quantity
     const increaseQuantity = () => {
       const newQuantity = quantity + 1;
       dispatch(updateQuantity({ quantity: newQuantity, id }));
     };
-
+    //function to decrease the product quntity
     const decreaseQuantity = () => {
-      if (quantity > 0) {
+      if (quantity > 1) {
         const newQuantity = quantity - 1;
         dispatch(updateQuantity({ quantity: newQuantity, id }));
       }
     };
     return (
       <Warapper>
-        <Button onClick={increaseQuantity}>+</Button>
-        <Quantity>{quantity}</Quantity>
-        <Button onClick={decreaseQuantity}>-</Button>
+        <Button onClick={increaseQuantity} overlay={overlay}>
+          +
+        </Button>
+        <Quantity overlay>{quantity}</Quantity>
+        <Button onClick={decreaseQuantity} overlay={overlay}>
+          -
+        </Button>
       </Warapper>
     );
   }

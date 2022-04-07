@@ -6,12 +6,19 @@ export const Content = styled.div`
   flex-direction: column;
 `;
 
+export const EmptyCart = styled.p`
+  width: 50%;
+  align-self: center;
+  margin: 0 auto;
+  font-size: 18px;
+  font-weight: 400;
+`;
+
 export const Item = styled.div`
   width: 90%;
-  min-height: 200px;
   display: flex;
   padding: 1rem 0;
-  border-top: 1px solid #e5e5e5;
+  border-top: ${(props) => (props.overlay ? "" : "1px solid #e5e5e5")};
 `;
 
 export const ItemDetails = styled.div`
@@ -22,31 +29,33 @@ export const ItemDetails = styled.div`
 
 export const ProductBrand = styled.p`
   font-style: normal;
-  font-weight: 600;
-  font-size: 30px;
-  margin-bottom: 1rem;
+  font-weight: ${(props) => (props.overlay ? "300" : "600")};
+  font-size: ${(props) => (props.overlay ? "16px" : "30px")};
+  margin-bottom: ${(props) => (props.overlay ? "0.5rem" : "1rem")};
+  line-height: 22px;
 `;
 
 export const ProductName = styled.p`
   font-style: normal;
-  font-weight: 400;
-  font-size: 30px;
-  margin-bottom: 1rem;
+  font-weight: ${(props) => (props.overlay ? "300" : "400")};
+  font-size: ${(props) => (props.overlay ? "16px" : "30px")};
+  margin-bottom: ${(props) => (props.overlay ? "0.5rem" : "1rem")};
+  line-height: 22px;
 `;
 
 export const SelectedAttributes = styled.ul`
   display: flex;
   list-style: none;
-  margin-top: 1rem;
+  margin-top: ${(props) => (props.overlay ? "0.5rem" : "1rem")};
   align-items: center;
   li {
-    padding: 15px;
+    padding: ${(props) => (props.overlay ? "7px" : "15px")};
     margin-right: 15px;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     font-family: "Source Sans Pro";
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
+    font-size: ${(props) => (props.overlay ? "14px" : "16px")};
     background-color: black;
     color: var(--white);
   }

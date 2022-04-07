@@ -1,23 +1,21 @@
 import { Component } from "react";
 //redux
 import { connect } from "react-redux";
+//utils
+import { getAmount } from "../../utils/helpers";
 //styles
 import { Price } from "./ProductPrice.styles";
 class ProductPrice extends Component {
   render() {
-    // Get the selected currency from the redux store
-    const { currencySymbol, prices } = this.props;
-    //this is a helper function to get the amout of a product depending on the currency selected
-    const getAmount = (prices, currency) => {
-      const amountArray = prices.filter((price) => {
-        return price.currency.symbol === currency;
-      });
-      const amount = amountArray[0].amount;
-      return amount;
-    };
+    // Get the selected currency from the redux store and the overlay property for styles
+    const { currencySymbol, prices, overlay } = this.props;
+
+    //use the helper function to get the price of a product depending on the currency selected
+    const amount = getAmount(prices, currencySymbol);
+
     return (
-      <Price>
-        {currencySymbol} {getAmount(prices, currencySymbol)}
+      <Price overlay={overlay}>
+        {currencySymbol} {amount}
       </Price>
     );
   }

@@ -13,21 +13,23 @@ import {
   ProductName,
   ItemDetails,
   SelectedAttributes,
+  EmptyCart,
 } from "./CartItems.styles";
 
 class CartItems extends Component {
   render() {
-    const { items } = this.props;
+    const { items, overlay } = this.props;
+
     return (
       <Content>
         {items.length > 0 ? (
           items.map((item) => (
-            <Item key={item.id}>
+            <Item key={item.id} overlay={overlay}>
               <ItemDetails>
-                <ProductBrand>{item.brand}</ProductBrand>
-                <ProductName>{item.name}</ProductName>
-                <ProductPrice prices={item.price} />
-                <SelectedAttributes>
+                <ProductBrand overlay={overlay}>{item.brand}</ProductBrand>
+                <ProductName overlay={overlay}>{item.name}</ProductName>
+                <ProductPrice prices={item.price} overlay={overlay} />
+                <SelectedAttributes overlay={overlay}>
                   {Object.keys(item.attributes).map((attrKey) => (
                     <li
                       key={attrKey}
@@ -38,14 +40,18 @@ class CartItems extends Component {
                   ))}
                 </SelectedAttributes>
               </ItemDetails>
-              <ProductQuantiy quantity={item.quantity} id={item.id} />
-              <Carousel images={item.gallery} />
+              <ProductQuantiy
+                quantity={item.quantity}
+                id={item.id}
+                overlay={overlay}
+              />
+              <Carousel images={item.gallery} overlay={overlay} />
             </Item>
           ))
         ) : (
-          <p>
+          <EmptyCart>
             You haven't add anything to the cart yet, add some prodcust please!
-          </p>
+          </EmptyCart>
         )}
       </Content>
     );

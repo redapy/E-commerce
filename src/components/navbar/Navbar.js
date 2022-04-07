@@ -7,9 +7,24 @@ import { CartIcon, Logo, Nav, NavLinks, Side, Wrapper } from "./Navbar.styles";
 //icons
 import logo from "../../assests/logo.svg";
 import cartIcon from "../../assests/cartIcon.svg";
+import CartOverlay from "../cartOverlay/CartOverlay";
+import QuantityBadge from "../quntityBadge/QuantityBadge";
 
 class Navbar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      cartIsOpened: false,
+    };
+  }
+  //function to open/close the cart overlay
+  toggleCart = () => {
+    this.setState((prevState) => ({
+      cartIsOpened: !prevState.cartIsOpened,
+    }));
+  };
   render() {
+    const { cartIsOpened } = this.state;
     return (
       <Wrapper>
         <Nav>
@@ -30,9 +45,11 @@ class Navbar extends Component {
         </Logo>
         <Side>
           <CurrencySwitcher />
-          <CartIcon>
+          <CartIcon onClick={this.toggleCart}>
+            <QuantityBadge />
             <img src={cartIcon} alt="cart icon" />
           </CartIcon>
+          {cartIsOpened && <CartOverlay />}
         </Side>
       </Wrapper>
     );
