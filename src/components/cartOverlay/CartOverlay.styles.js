@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  min-height: 100%;
-  position: absolute;
+  position: fixed;
   z-index: 2;
   top: 80px;
+  bottom: 0;
   background-color: rgba(57, 55, 72, 0.22);
   left: 0;
   right: 0;
@@ -15,6 +15,8 @@ export const OverLay = styled.div`
   right: 70px;
   width: 325px;
   min-height: 250px;
+  max-height: 800px;
+  overflow: auto;
   display: flex;
   flex-direction: column;
   align-items: center;

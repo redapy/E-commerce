@@ -11,6 +11,10 @@ const cartReducer = (state = intiState, action) => {
         }
         return item;
       });
+    case "DELETE_PRODUCT":
+      return state.filter((item) => {
+        return item.id !== action.id;
+      });
     default:
       return state;
   }

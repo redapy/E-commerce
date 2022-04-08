@@ -1,6 +1,7 @@
 import { Component } from "react";
 //redux
 import { connect } from "react-redux";
+import { deleteProduct } from "../../store/actions/cartActions";
 //components
 import ProductPrice from "../productPrice/ProductPrice";
 import ProductQuantiy from "./ProductQuantiy";
@@ -14,11 +15,18 @@ import {
   ItemDetails,
   SelectedAttributes,
   EmptyCart,
+  DeleteItem,
 } from "./CartItems.styles";
+//icons
+import trashcan from "../../assests/trash-can.svg";
 
 class CartItems extends Component {
   render() {
-    const { items, overlay } = this.props;
+    const { items, overlay, dispatch } = this.props;
+
+    const handleDelete = (id) => {
+      dispatch(deleteProduct(id));
+    };
 
     return (
       <Content>
@@ -39,6 +47,9 @@ class CartItems extends Component {
                     </li>
                   ))}
                 </SelectedAttributes>
+                <DeleteItem onClick={() => handleDelete(item.id)}>
+                  <img src={trashcan} alt="delete this product" />
+                </DeleteItem>
               </ItemDetails>
               <ProductQuantiy
                 quantity={item.quantity}
@@ -49,9 +60,7 @@ class CartItems extends Component {
             </Item>
           ))
         ) : (
-          <EmptyCart>
-            You haven't add anything to the cart yet, add some prodcust please!
-          </EmptyCart>
+          <EmptyCart>Your Cart is empty!</EmptyCart>
         )}
       </Content>
     );
@@ -64,4 +73,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(CartItems);
+const mapDispatchToProps = (dispatch) => ({
+  dispatch,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CartItems);

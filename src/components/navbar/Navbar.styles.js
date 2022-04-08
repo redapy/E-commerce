@@ -3,6 +3,8 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   width: 100%;
   position: sticky;
+  top: 0;
+  z-index: 3;
   height: 80px;
   display: flex;
   justify-content: space-between;

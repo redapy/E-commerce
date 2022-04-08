@@ -7,8 +7,8 @@ export const Content = styled.div`
 `;
 
 export const EmptyCart = styled.p`
-  width: 50%;
-  align-self: center;
+  width: 80%;
+  text-align: center;
   margin: 0 auto;
   font-size: 18px;
   font-weight: 400;
@@ -59,4 +59,12 @@ export const SelectedAttributes = styled.ul`
     background-color: black;
     color: var(--white);
   }
+`;
+
+export const DeleteItem = styled.button`
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  border: none;
+  margin-top: 1rem;
 `;
