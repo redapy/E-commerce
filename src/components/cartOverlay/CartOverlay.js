@@ -1,4 +1,5 @@
 import { Component } from "react";
+import ReactDOM from "react-dom";
 //redux
 import { connect } from "react-redux";
 //router
@@ -23,7 +24,7 @@ class CartOverlay extends Component {
     //get the total items in the cart
     const totalQuanity = calculteQuantity(items);
 
-    return (
+    return ReactDOM.createPortal(
       <Wrapper>
         <OverLay>
           <Header>
@@ -38,7 +39,8 @@ class CartOverlay extends Component {
             <Button checkout>check out</Button>
           </ButtonsGroup>
         </OverLay>
-      </Wrapper>
+      </Wrapper>,
+      document.body
     );
   }
 }

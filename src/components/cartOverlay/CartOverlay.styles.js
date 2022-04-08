@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  min-height: 90vh;
+  min-height: 100%;
   position: absolute;
-  z-index: 10;
+  z-index: 2;
   top: 80px;
   background-color: rgba(57, 55, 72, 0.22);
   left: 0;
