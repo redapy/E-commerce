@@ -24,6 +24,13 @@ export const GET_CATEGORY_PRODUCTS = gql`
           }
           amount
         }
+        attributes {
+          id
+          items {
+            id
+            value
+          }
+        }
       }
     }
   }

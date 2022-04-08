@@ -8,6 +8,12 @@ import { addProduct } from "../../store/actions/cartActions";
 //Apollo and query
 import { graphql } from "@apollo/client/react/hoc";
 import { GET_PRODUCT_DETAILS } from "../../utils/queries";
+//components
+import Gallery from "./Gallery";
+import ProductAttributes from "./ProductAttributes";
+import ProductPrice from "../../components/productPrice/ProductPrice";
+//helpers
+import { generateID } from "../../utils/helpers";
 // styles
 import {
   AddCartButton,
@@ -19,10 +25,6 @@ import {
   ProductName,
   Wrapper,
 } from "./ProductDescription.styles";
-//components
-import Gallery from "./Gallery";
-import ProductAttributes from "./ProductAttributes";
-import ProductPrice from "../../components/productPrice/ProductPrice";
 
 class ProductDescription extends Component {
   constructor(props) {
@@ -45,17 +47,6 @@ class ProductDescription extends Component {
     // more specifically to update the cartItem store related to the cart.
     const handleAddToCart = (product) => {
       this.props.dispatch(addProduct({ ...product, quantity: 1 }));
-    };
-
-    // function that genrate a unique id, in case a user add the same product with different attributes
-    const generateID = (id, attributes) => {
-      // get the attributes values
-      const attrValuesArray = Object.values(attributes);
-      // contract the original id with the attributes values to get a new unique id
-      const genereatedid = attrValuesArray.reduce((idString, attr) => {
-        return idString + attr;
-      }, id);
-      return genereatedid;
     };
 
     return (

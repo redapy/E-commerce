@@ -13,3 +13,14 @@ export const getAmount = (prices, currency) => {
   const amount = amountArray[0].amount;
   return amount;
 };
+
+// function that genrate a unique id, in case a user add the same product with different attributes
+export const generateID = (id, attributes) => {
+  // get the attributes values
+  const attrValuesArray = Object.values(attributes);
+  // contract the original id with the attributes values to get a new unique id
+  const genereatedid = attrValuesArray.reduce((idString, attr) => {
+    return idString + attr;
+  }, id);
+  return genereatedid;
+};
