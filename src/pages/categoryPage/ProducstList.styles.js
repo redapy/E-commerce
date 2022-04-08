@@ -60,7 +60,7 @@ export const ProductImage = styled.div`
   position: relative;
   margin-bottom: auto;
   p {
-    //center the out of stock
+    //center the "out of stock" text
     position: absolute;
     top: 50%;
     left: 50%;

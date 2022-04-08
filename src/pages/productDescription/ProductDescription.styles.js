@@ -24,7 +24,7 @@ export const Grid = styled.div`
 `;
 
 // Product Fetails style
-export const ProductDetails = styled.div`
+export const ProductDetails = styled.form`
   grid-column: 9/ -1;
   display: flex;
   flex-direction: column;

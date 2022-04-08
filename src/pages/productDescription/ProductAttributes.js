@@ -46,6 +46,7 @@ class ProductAttributes extends Component {
                     name={name}
                     value={value}
                     onChange={this.handleSelect}
+                    required
                   />
                 </Item>
               ))}

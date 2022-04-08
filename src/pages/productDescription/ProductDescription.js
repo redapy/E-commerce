@@ -30,24 +30,54 @@ class ProductDescription extends Component {
     this.state = {};
   }
 
+  // this funtion will grab the attributes selected from the child component and update this component state
   getAttributes = (attributes) => {
     this.setState(attributes);
   };
+
   render() {
-    const { loading, product } = this.props.data;
+    // destruct the variables (data) we get back from the GraphQL backend
+    const { loading, product, error } = this.props.data;
+    // get the current product id from the URL
     const { id } = this.props.match.params;
-    const handleAddToCart = (id, brand, name, price, gallery, attributes) => {
-      this.props.dispatch(
-        addProduct({ id, brand, name, price, gallery, attributes, quantity: 1 })
-      );
+
+    // function that takes an object and then dspatch an action in order to update the redux store,
+    // more specifically to update the cartItem store related to the cart.
+    const handleAddToCart = (product) => {
+      this.props.dispatch(addProduct({ ...product, quantity: 1 }));
     };
+
+    // function that genrate a unique id, in case a user add the same product with different attributes
+    const generateID = (id, attributes) => {
+      // get the attributes values
+      const attrValuesArray = Object.values(attributes);
+      // contract the original id with the attributes values to get a new unique id
+      const genereatedid = attrValuesArray.reduce((idString, attr) => {
+        return idString + attr;
+      }, id);
+      return genereatedid;
+    };
+
     return (
       <Wrapper>
+        {error && <p>Something went Wrong ../</p>}
         {loading && <p>Loading...</p>}
         {product && (
           <Grid>
             <Gallery gallery={product.gallery} alt={product.name} />
-            <ProductDetails>
+            <ProductDetails
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleAddToCart({
+                  id: generateID(id, this.state),
+                  brand: product.brand,
+                  name: product.name,
+                  price: product.prices,
+                  gallery: product.gallery,
+                  attributes: this.state,
+                });
+              }}
+            >
               <Brand>{product.brand}</Brand>
               <ProductName>{product.name}</ProductName>
               <ProductAttributes
@@ -58,20 +88,7 @@ class ProductDescription extends Component {
                 <span>Price:</span>
                 <ProductPrice prices={product.prices} />
               </Price>
-              <AddCartButton
-                onClick={() =>
-                  handleAddToCart(
-                    id,
-                    product.brand,
-                    product.name,
-                    product.prices,
-                    product.gallery,
-                    this.state
-                  )
-                }
-              >
-                ADD TO CART
-              </AddCartButton>
+              <AddCartButton>ADD TO CART</AddCartButton>
               <Description
                 dangerouslySetInnerHTML={{ __html: product.description }}
               />

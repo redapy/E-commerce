@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: flex-start;
 `;
-export const Attribute = styled.form`
+export const Attribute = styled.div`
   width: 75%;
   display: flex;
   flex-direction: column;
@@ -39,7 +39,7 @@ export const Item = styled.label`
   color: ${(props) => (props.checked ? "var(--white)" : "black")};
   border: ${({ checked, swatch }) =>
     checked && swatch ? "3px dashed gray" : "1px solid #a6a6a6"};
-
+  // hide the circle that comes as a default style with radio button
   input[type="radio"] {
     opacity: 0;
     width: 0;
