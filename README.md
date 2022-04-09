@@ -19,4 +19,10 @@ Before start explaining the process and the code, I find it useful to understand
 - Inside app.js setup routes with react-router and define each page path.
 - I used `react-router` v5 because v6 is moving away from claas components and focus heavly on using hooks.
 ### Add the currency switcher
-- 
+- Set up redux and create a `rootReducer` that will hold the app's different reducers
+- Create a `currencyReducer`, which holds the selected currency symbol. 
+- Define a `GET_CURRENCIES` that will grab all the available currencies in GraphQL endpoint.
+- Create a CurrencySwitcher component, wrap it in the `graphql HOC` to get access to the data (currencies we get back from the GraphQL endpoint) in the compoenent props.
+- Map the redux state to props, and map a `selectCurrecny` function, which dispatches an action to change the selected currency, to props as well.
+- Output the currencies in a dropdown menu and add an onClick event that will call the `selectCurrecny` function, thus changing the selected currency in the redux store.
+- Implement functionality to close/open the dropdown menu, and close it when clicked outside of it.
