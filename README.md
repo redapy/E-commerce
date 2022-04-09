@@ -20,9 +20,23 @@ Before start explaining the process and the code, I find it useful to understand
 - I used `react-router` v5 because v6 is moving away from claas components and focus heavly on using hooks.
 ### Add the currency switcher
 - Set up redux and create a `rootReducer` that will hold the app's different reducers
-- Create a `currencyReducer`, which holds the selected currency symbol. 
-- Define a `GET_CURRENCIES` that will grab all the available currencies in GraphQL endpoint.
-- Create a CurrencySwitcher component, wrap it in the `graphql HOC` to get access to the data (currencies we get back from the GraphQL endpoint) in the compoenent props.
+- Created a `currencyReducer`, which holds the selected currency symbol. 
+- Defined a `GET_CURRENCIES` that will grab all the available currencies in GraphQL endpoint.
+- Created a CurrencySwitcher component, wrap it in the `graphql HOC` to get access to the data (currencies we get back from the GraphQL endpoint) in the compoenent props.
 - Map the redux state to props, and map a `selectCurrecny` function, which dispatches an action to change the selected currency, to props as well.
 - Output the currencies in a dropdown menu and add an onClick event that will call the `selectCurrecny` function, thus changing the selected currency in the redux store.
-- Implement functionality to close/open the dropdown menu, and close it when clicked outside of it.
+- Implemented functionality to close/open the dropdown menu, and close it when clicked outside of it.
+### Add Category Page
+- Created a CategorPage component, and wrap it with the `withRouter HOC` to get access to the route parameters in the component's props.
+- Grab the name of the category from the route params, and pass it as props to the `<ProductsList />` component.
+#### `ProductsList`
+- Defined a `GET_CATEGORY_PRODUCTS` query that accepts an `input` variable, then use that variable to filter the products by category name
+- Created a  `<ProductsList />` component and wrap it with the Apollo `graphql HOC`.
+- Aas a second argument for the HOC pass an object that defines an options key. The option's value is an arrow function that takes the component's props and returns an object.
+- Inside that object define the query variables, and give the `input` variable the `categoryName` that was passed as props.
+- Iterate through the `products`, which are filtered from the backend depending on the categoryName, I get back from the GraphQL endpoint.
+- Pass the prices (prices that correspond to different currencies) for a single product to the `<ProductPrice />` component, that will output a single price.
+#### `ProductPrice`
+- Created a `<ProductPrice />` and map the redux state to the component's props, to know which currency is selected.
+- Created the `getAmount` helper function that takes the prices of a product and the currency symbol. it uses the `.filter` array method to get the price that matches the current currency selected and return it.
+### Add Product Description Page
