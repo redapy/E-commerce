@@ -40,3 +40,14 @@ Before start explaining the process and the code, I find it useful to understand
 - Created a `<ProductPrice />` and map the redux state to the component's props, to know which currency is selected.
 - Created the `getAmount` helper function that takes the prices of a product and the currency symbol. it uses the `.filter` array method to get the price that matches the current currency selected and return it.
 ### Add Product Description Page
+- It follows the same pattern as the `<ProducList /> component`, the only difference is it grabs a product `id` from the route params instead of a category name and it use that `id` to get the specific product from the GraphQL endpoint.
+- It passes gallery as a prop to the `<Gallery />` components, which output a gallery view. A main picture(the big one) and the rest are thumbnails.
+- When you click one of the thumbnails it changes the main picture to that thumbnail.
+- It passes the product attributes, and the `getAttributes` function to the `<ProductAttributes />` component.
+#### `<ProductAttributes />`
+- Created `<ProductAttributes />` that output the differentt groups of controlled radio buttons (Size, Color..), Each radio button represents an attribute.
+- Added an onChange eventListener that fires the `handleSelect` function.
+- `handleSelect` will call the `getAttributes` functions, which will update the parent component (`<ProductDescription />`) state to be in the following format `{GroupName: attribute}` (example: {Size: 'M'}).
+- Styled the selected attribute differently depending on the checked attribute.
+- If a an attribute has a swatch attribute are iutpteded as colored squares.
+#### InMemoryCash
