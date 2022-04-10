@@ -50,4 +50,10 @@ Before start explaining the process and the code, I find it useful to understand
 - `handleSelect` will call the `getAttributes` functions, which will update the parent component (`<ProductDescription />`) state to be in the following format `{GroupName: attribute}` (example: {Size: 'M'}).
 - Styled the selected attribute differently depending on the checked attribute.
 - If a an attribute has a swatch attribute are iutpteded as colored squares.
-#### InMemoryCash
+#### InMemoryCache configuration
+- After I get back the data from the GraphQL, the Apollo Client stores that data as a flat object in a local, normalized, in-memory cache. So, the next time you ask for the same data it will grab it from the cached data.
+- However, I had a **problem** due to how Apollo generates cache ID to identify each object and because the attributesSets in the QraphQL schema have the same id, even for different products ( AttributeSet Size for example has the id `Size` for all products).
+> By default, an object's cache ID is the concatenation of the object's __typename and id (or _id) fields, separated by a colon (:).
+- The problem is the attributes will be messed up and all the products will have the  same attributes for each group.
+- As a **solution** for this, I needed to customize the generated cache ID to use the array of items `[items]` to be the unique identifies instead of the attributeSet id.
+
