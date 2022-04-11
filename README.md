@@ -56,4 +56,21 @@ Before start explaining the process and the code, I find it useful to understand
 > By default, an object's cache ID is the concatenation of the object's __typename and id (or _id) fields, separated by a colon (:).
 - The problem is the attributes will be messed up and all the products will have the  same attributes for each group.
 - As a **solution** for this, I needed to customize the generated cache ID to use the array of items `[items]` to be the unique identifies instead of the attributeSet id.
-
+### Implement functionality to add products to the cart
+- Create a `cartReducer` and add it to the `rootReducer` as `cartItems`.
+- Define the action creator `addProduct` that takes an object (the product added) as an argument and returns an action with that `product` as a payload.
+#### Add product from the Product Description Page
+- Map the `dispatch` function to the `ProductDescription` component's props.
+- Define a `handleAddToCart` function that takes a `product object` as an argument and dispatch the `addProduct` action creator with that `product`.
+- When you click on the *add to cart* button, the `onSubmit` EventListener catches that and calls the `handleAddToCart` with the correspondent details for that product as an object.
+- The `id` for each object is generated with the `generateID` helper function that takes the product id and its selected attributes and returns the concatenation of those two.
+- The reason why I produce a unique `id` like this, is to avoid having the same id if a user added the same product with different attributes.
+- You can't add a product if the attributes are not selected
+#### Add product from the Category Page
+- It follows a similar pattern as from adding the description page
+- The only difference is instead of having `onSubmit` EventListener, it has an `onCLick` EventListener that fires whenever you click the cart icon.
+- Because a user can't add a product to the cart without selecting attributes, I created the `getFirstAttrs` function that selects the first attributes as a default.
+#### Handle `ADD_PRODUCT` in the `cartReducer`
+- Create `addProductOrIncreaseQauntity` that takes the items already existing inside the cart and the `id` of the product added coming as payload, and it returns a new array.
+- If the same product is found it increases its quantity, if not it will add a new product to the state.
+- Because of the way the `id` is generated (original id + attributes), if a product is added with different attributes it will count as a new product.
