@@ -18,7 +18,7 @@ import {
   DeleteItem,
 } from "./CartItems.styles";
 //icons
-import trashcan from "../../assests/trash-can.svg";
+import trashcan from "../../assets/trash-can.svg";
 
 class CartItems extends Component {
   render() {

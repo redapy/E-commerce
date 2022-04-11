@@ -5,8 +5,8 @@ import CurrencySwitcher from "../currencySwitcher/CurrencySwitcher";
 //styles
 import { CartIcon, Logo, Nav, NavLinks, Side, Wrapper } from "./Navbar.styles";
 //icons
-import logo from "../../assests/logo.svg";
-import cartIcon from "../../assests/cartIcon.svg";
+import logo from "../../assets/logo.svg";
+import cartIcon from "../../assets/cartIcon.svg";
 import CartOverlay from "../cartOverlay/CartOverlay";
 import QuantityBadge from "../quntityBadge/QuantityBadge";
 

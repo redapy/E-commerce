@@ -38,7 +38,7 @@ class ProductDescription extends Component {
   };
 
   render() {
-    // destruct the variables (data) we get back from the GraphQL backend
+    // destruct the variables we get back from the GraphQL backend
     const { loading, product, error } = this.props.data;
     // get the current product id from the URL
     const { id } = this.props.match.params;
@@ -74,6 +74,7 @@ class ProductDescription extends Component {
               <ProductAttributes
                 attributes={product.attributes}
                 getAttributes={this.getAttributes}
+                selectedAttributes={this.state}
               />
               <Price>
                 <span>Price:</span>
@@ -104,5 +105,5 @@ export default compose(
       },
     }),
   }),
-  connect(mapDispatchToProps)
+  connect(null, mapDispatchToProps)
 )(ProductDescription);

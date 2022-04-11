@@ -7,26 +7,12 @@ import {
 } from "./ProductAttributes.styles";
 
 class ProductAttributes extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  handleSelect = (event) => {
-    this.setState(
-      { [event.target.name]: event.target.value },
-      //  add the setState second argument that will be exucted once the stete is updated
-      // once the state is updated trigger the getAttributes function, which is passed as props from the parent component,
-      // to updat the parent state
-      () => {
-        this.props.getAttributes(this.state);
-      }
-    );
-  };
-
   render() {
-    const { attributes } = this.props;
-
+    const { attributes, getAttributes, selectedAttributes } = this.props;
+    // set the parent state to the selected attributes
+    const handleSelect = (event) => {
+      getAttributes({ [event.target.name]: event.target.value });
+    };
     return (
       <>
         {attributes.map(({ id: attrid, name, type, items }) => (
@@ -37,7 +23,7 @@ class ProductAttributes extends Component {
                 <Item
                   key={itemid}
                   style={{ background: value }}
-                  checked={this.state[name] === value}
+                  checked={selectedAttributes[name] === value}
                   swatch={type === "swatch"}
                 >
                   {type === "swatch" ? "" : value}
@@ -45,7 +31,7 @@ class ProductAttributes extends Component {
                     type="radio"
                     name={name}
                     value={value}
-                    onChange={this.handleSelect}
+                    onChange={handleSelect}
                     required
                   />
                 </Item>

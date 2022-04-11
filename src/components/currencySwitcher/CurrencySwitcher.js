@@ -12,8 +12,8 @@ import {
   ToggleButton,
 } from "./CurrencySwitcher.styles";
 //icons
-import openArrow from "../../assests/openArrow.svg";
-import closeArrow from "../../assests/closeArrow.svg";
+import openArrow from "../../assets/openArrow.svg";
+import closeArrow from "../../assets/closeArrow.svg";
 
 class CurrencySwitcher extends Component {
   constructor(props) {
@@ -30,6 +30,7 @@ class CurrencySwitcher extends Component {
       isOpen: !prevState.isOpen,
     }));
   };
+
   // close the menu if clicked outside of it
   handleClickOutsideMenu = (e) => {
     //check if we have th node ref (menu ref), if there is a ref check that is not the menu itself
@@ -56,7 +57,7 @@ class CurrencySwitcher extends Component {
   }
 
   render() {
-    const { loading, currencies } = this.props.data;
+    const { loading, currencies, error } = this.props.data;
     const { isOpen } = this.state;
     const { currencySymbol } = this.props;
     return (
@@ -71,6 +72,7 @@ class CurrencySwitcher extends Component {
         </ToggleButton>
         {isOpen && (
           <CurrencyList>
+            {error && <p>Couldn't get currencies</p>}
             {loading && <p>Loading...</p>}
             {currencies &&
               currencies.map((currency) => (

@@ -12,13 +12,13 @@ class ProductQuantiy extends Component {
     // function to increase the product quantity
     const increaseQuantity = () => {
       const newQuantity = quantity + 1;
-      dispatch(updateQuantity({ quantity: newQuantity, id }));
+      dispatch(updateQuantity(newQuantity, id));
     };
     //function to decrease the product quntity
     const decreaseQuantity = () => {
       if (quantity > 1) {
         const newQuantity = quantity - 1;
-        dispatch(updateQuantity({ quantity: newQuantity, id }));
+        dispatch(updateQuantity(newQuantity, id));
       }
     };
     return (

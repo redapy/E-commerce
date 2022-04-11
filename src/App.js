@@ -1,6 +1,6 @@
 import { Component } from "react";
 // react router
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import CartPage from "./pages/cartPage/CartPage";
 //components
 import Navbar from "./components/navbar/Navbar";
@@ -14,6 +14,7 @@ class App extends Component {
         <BrowserRouter>
           <Navbar />
           <Switch>
+            <Redirect exact from="/" to="/categories/all" />
             <Route path="/categories/:title">
               <CategoryPage />
             </Route>

@@ -2,8 +2,8 @@ import { Component } from "react";
 //styles
 import { Arrow, Wrapper, Image } from "./Carousel.styles";
 //icons
-import leftArrow from "../../assests/left-arrow.svg";
-import rightArrow from "../../assests/right-arrow.svg";
+import leftArrow from "../../assets/left-arrow.svg";
+import rightArrow from "../../assets/right-arrow.svg";
 
 class Carousel extends Component {
   constructor(props) {

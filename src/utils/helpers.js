@@ -18,7 +18,7 @@ export const getAmount = (prices, currency) => {
 export const generateID = (id, attributes) => {
   // get the attributes values
   const attrValuesArray = Object.values(attributes);
-  // contract the original id with the attributes values to get a new unique id
+  // concatenate the original id with the attributes values to get a new unique id
   const genereatedid = attrValuesArray.reduce((idString, attr) => {
     return idString + attr;
   }, id);

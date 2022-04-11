@@ -6,7 +6,7 @@ import ProductsList from "./ProducstList";
 //styles
 import { Header, Wrapper } from "./CategoryPage.styles";
 
-class ProductsPage extends Component {
+class CategoryPage extends Component {
   render() {
     const categoryName = this.props.match.params.title;
     return (
@@ -18,4 +18,4 @@ class ProductsPage extends Component {
   }
 }
 
-export default withRouter(ProductsPage);
+export default withRouter(CategoryPage);

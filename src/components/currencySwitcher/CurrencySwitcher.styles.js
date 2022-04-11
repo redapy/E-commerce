@@ -18,12 +18,15 @@ export const ToggleButton = styled.button`
   border: none;
   background-color: var(--white);
   padding: 2px;
+  width: 20px;
+  height: 20px;
 `;
 
 export const CurrencyList = styled.ul`
   position: absolute;
   top: 40px;
   left: -15px;
+  z-index: 4;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

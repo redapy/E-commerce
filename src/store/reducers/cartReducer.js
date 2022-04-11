@@ -6,8 +6,8 @@ const cartReducer = (state = intiState, action) => {
       return addProductOrIncreaseQauntity(state, action.product);
     case "UPDATE_QUANTITY":
       return state.map((item) => {
-        if (item.id === action.product.id) {
-          return { ...item, quantity: action.product.quantity };
+        if (item.id === action.payload.id) {
+          return { ...item, quantity: action.payload.quantity };
         }
         return item;
       });

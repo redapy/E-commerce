@@ -13,7 +13,7 @@ import { GET_CATEGORY_PRODUCTS } from "../../utils/queries";
 import { generateID } from "../../utils/helpers";
 //styles and icons
 import { Card, CartIcon, Grid, ProductImage } from "./ProducstList.styles";
-import cart from "../../assests/cartIcon.svg";
+import cart from "../../assets/cartIcon.svg";
 
 class ProducstList extends Component {
   render() {
@@ -84,7 +84,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default compose(
-  connect(mapDispatchToProps),
+  connect(null, mapDispatchToProps),
   graphql(GET_CATEGORY_PRODUCTS, {
     options: (props) => ({
       variables: {

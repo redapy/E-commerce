@@ -30,6 +30,7 @@ class CartOverlay extends Component {
           <Header>
             My bag, <span>{totalQuanity} items</span>
           </Header>
+          {/* the overlay property here is only for styling purposes */}
           <CartItems overlay={true} />
           <TotalPrice />
           <ButtonsGroup>
