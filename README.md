@@ -74,3 +74,17 @@ Before start explaining the process and the code, I find it useful to understand
 - Create `addProductOrIncreaseQauntity` that takes the items already existing inside the cart and the `id` of the product added coming as payload, and it returns a new array.
 - If the same product is found it increases its quantity, if not it will add a new product to the state.
 - Because of the way the `id` is generated (original id + attributes), if a product is added with different attributes it will count as a new product.
+### Add the Cart Page
+- Create the `<CartItems />` component and connect its props with the redux store, `cartItems`. Then output all the items.
+- Create a `<Carousel />` component for the gallery. You can click the left and right arrows to navigate between images.
+- create a `<Productquantity />` component to allow the user to update the product quantity.
+#### Implement the functionality to update the quantity
+- Define the `updateQuantity` action creator that takes a quantity and a product id, and returns an action with those two as a payload.
+- Whenever a user changes the quantity of a product on the cart page it will dispatch the `updateQuantity` action.
+- In the cartReducer handle the `UPDATE_QUANTITY` case, it maps through the items in the state and changes the quantity of the product that its id matches the `id` coming as payload.
+#### Implement functionality to delete an item from the cart
+- it follows the same pattern as updating the quantity, the only difference is that it uses `.filter` to delete the product that matches the id coming as a payload
+### Add mini-cart
+- create an overlay and use the `<CartItems />` in inside it. Pass a property `overlay` of true to style it differently than the cart page.
+- Add `<QuantityBadge />` component and connect its props to the redux state. 
+- It uses the array method `.reduce` to iterate through the items in the cart and output  the quantity of the total items.
