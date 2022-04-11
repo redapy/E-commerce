@@ -67,4 +67,5 @@ export const DeleteItem = styled.button`
   background-color: transparent;
   border: none;
   margin-top: 1rem;
+  cursor: pointer;
 `;

@@ -52,7 +52,7 @@ export const Logo = styled.div`
 `;
 
 export const Side = styled.div`
-  width: 5%;
+  width: 75px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -64,6 +64,7 @@ export const CartIcon = styled.button`
   background-color: transparent;
   width: 30px;
   height: 30px;
+  cursor: pointer;
   image {
     width: 20px;
     height: 20px;

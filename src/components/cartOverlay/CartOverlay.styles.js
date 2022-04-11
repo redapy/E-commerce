@@ -15,7 +15,7 @@ export const OverLay = styled.div`
   right: 70px;
   width: 325px;
   min-height: 250px;
-  max-height: 800px;
+  max-height: 600px;
   overflow: auto;
   display: flex;
   flex-direction: column;
