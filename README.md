@@ -88,3 +88,6 @@ Before start explaining the process and the code, I find it useful to understand
 - create an overlay and use the `<CartItems />` in inside it. Pass a property `overlay` of true to style it differently than the cart page.
 - Add `<QuantityBadge />` component and connect its props to the redux state. 
 - It uses the array method `.reduce` to iterate through the items in the cart and output  the quantity of the total items.
+## Notes
+- I didn't use redux to store the data I'm getting back (products for example) from the GraphQL endpoint. Because Apollo Client kind of doing the same with the `inMemoryCache` and they are planning to make Apollo to be the only source of truth and "replace" redux.
+- I used ES6 arrow functions so I don't hav e to bind my methods (functions) everytime.
