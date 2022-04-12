@@ -22,6 +22,7 @@ export const OverLay = styled.div`
   align-items: center;
   padding: 12px 14px;
   background-color: var(--white);
+  border: red 1px solid;
 `;
 
 export const Header = styled.h3`

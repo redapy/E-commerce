@@ -8,7 +8,6 @@ class TotalPrice extends Component {
   render() {
     // destructre the variables needed from the props
     const { items, currencySymbol } = this.props;
-    console.log(items);
     // get the total price of all the product inside the cart
     //I use the "getAmount" helper to get the price from the prices array
     const totalPrice = items.reduce((total, item) => {

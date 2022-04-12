@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { Component, createRef } from "react";
 import ReactDOM from "react-dom";
 //redux
 import { connect } from "react-redux";
@@ -18,15 +18,34 @@ import {
 import TotalPrice from "./TotalPrice";
 
 class CartOverlay extends Component {
+  constructor(props) {
+    super(props);
+    this.cartRef = createRef();
+  }
+  // check if we clicked outside of the cart overlay
+  handleClickOutsideCart = (e) => {
+    if (this.cartRef && !this.cartRef.current.contains(e.target)) {
+      this.props.closeCart();
+    }
+  };
+  //detect click on the document
+  componentDidMount() {
+    document.addEventListener("mousedown", this.handleClickOutsideCart);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("mousedown", this.handleClickOutsideCart);
+  }
+
   render() {
-    const { items } = this.props;
+    const { items, closeCart } = this.props;
 
     //get the total items in the cart
     const totalQuanity = calculteQuantity(items);
 
     return ReactDOM.createPortal(
       <Wrapper>
-        <OverLay>
+        <OverLay ref={this.cartRef}>
           <Header>
             My bag, <span>{totalQuanity} items</span>
           </Header>
@@ -34,7 +53,7 @@ class CartOverlay extends Component {
           <CartItems overlay={true} />
           <TotalPrice />
           <ButtonsGroup>
-            <Button>
+            <Button onClick={closeCart}>
               <Link to="/cart">view bag</Link>
             </Button>
             <Button checkout>check out</Button>

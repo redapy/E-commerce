@@ -23,6 +23,14 @@ class Navbar extends Component {
       cartIsOpened: !prevState.cartIsOpened,
     }));
   };
+
+  //function to close the cart
+  closeCart = () => {
+    this.setState({
+      cartIsOpened: false,
+    });
+  };
+
   render() {
     const { cartIsOpened } = this.state;
     return (
@@ -49,7 +57,7 @@ class Navbar extends Component {
             <QuantityBadge />
             <img src={cartIcon} alt="cart icon" />
           </CartIcon>
-          {cartIsOpened && <CartOverlay />}
+          {cartIsOpened && <CartOverlay closeCart={this.closeCart} />}
         </Side>
       </Wrapper>
     );
