@@ -23,7 +23,7 @@ const client = new ApolloClient({
     //schema are not unique, it will results in same cashedID generated. That's why I'm using items as a unique identifier.
     typePolicies: {
       AttributeSet: {
-        keyFields: ["items"],
+        keyFields: ["id", "items"],
       },
       Attribute: {
         keyFields: ["id", "value"],
