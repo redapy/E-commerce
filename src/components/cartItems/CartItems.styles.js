@@ -45,19 +45,34 @@ export const ProductName = styled.p`
 
 export const SelectedAttributes = styled.ul`
   display: flex;
+  flex-direction: ${(props) => (props.overlay ? "column" : "row")};
   list-style: none;
   margin-top: ${(props) => (props.overlay ? "0.5rem" : "1rem")};
-  align-items: center;
+`;
+
+export const Attribute = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: ${(props) => (props.overlay ? "start" : "center")};
+  margin-right: 2em;
+  margin-bottom: 1em;
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 400;
+  font-size: ${(props) => (props.overlay ? "14px" : "16px")};
   li {
     padding: ${(props) => (props.overlay ? "7px" : "15px")};
-    margin-right: 15px;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    background-color: black;
+    color: var(--white);
+  }
+  span {
+    display: block;
+    margin-bottom: 0.5em;
     font-family: "Source Sans Pro";
     font-style: normal;
     font-weight: 400;
-    font-size: ${(props) => (props.overlay ? "14px" : "16px")};
-    background-color: black;
-    color: var(--white);
+    font-size: ${(props) => (props.overlay ? "14px" : "22px")};
   }
 `;
 
@@ -66,6 +81,6 @@ export const DeleteItem = styled.button`
   height: 20px;
   background-color: transparent;
   border: none;
-  margin-top: 1rem;
+  margin-top: 0.3em;
   cursor: pointer;
 `;

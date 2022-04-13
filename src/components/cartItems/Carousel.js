@@ -37,7 +37,6 @@ class Carousel extends Component {
     const { index } = this.state;
     const { images, overlay } = this.props;
     const image = images[index];
-    console.log(images.length);
     return (
       <Wrapper>
         {!overlay && images.length > 1 && (

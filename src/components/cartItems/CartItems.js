@@ -16,6 +16,7 @@ import {
   SelectedAttributes,
   EmptyCart,
   DeleteItem,
+  Attribute,
 } from "./CartItems.styles";
 //icons
 import trashcan from "../../assets/trash-can.svg";
@@ -39,12 +40,15 @@ class CartItems extends Component {
                 <ProductPrice prices={item.price} overlay={overlay} />
                 <SelectedAttributes overlay={overlay}>
                   {Object.keys(item.attributes).map((attrKey) => (
-                    <li
-                      key={attrKey}
-                      style={{ background: item.attributes[attrKey] }}
-                    >
-                      {attrKey === "Color" ? "" : item.attributes[attrKey]}
-                    </li>
+                    <Attribute overlay={overlay}>
+                      <span>{attrKey}</span>
+                      <li
+                        key={attrKey}
+                        style={{ background: item.attributes[attrKey] }}
+                      >
+                        {attrKey === "Color" ? "" : item.attributes[attrKey]}
+                      </li>
+                    </Attribute>
                   ))}
                 </SelectedAttributes>
                 <DeleteItem onClick={() => handleDelete(item.id)}>
