@@ -1,4 +1,5 @@
 import { Component } from "react";
+import dompurify from "dompurify";
 // react-router
 import { withRouter } from "react-router-dom";
 //redux
@@ -40,6 +41,8 @@ class ProductDescription extends Component {
   render() {
     // destruct the variables we get back from the GraphQL backend
     const { loading, product, error } = this.props.data;
+    // sanitizer
+    const sanitizer = dompurify.sanitize;
     // get the current product id from the URL
     const { id } = this.props.match.params;
 
@@ -87,7 +90,9 @@ class ProductDescription extends Component {
               </Price>
               <AddCartButton>ADD TO CART</AddCartButton>
               <Description
-                dangerouslySetInnerHTML={{ __html: product.description }}
+                dangerouslySetInnerHTML={{
+                  __html: sanitizer(product.description),
+                }}
               />
             </ProductDetails>
           </Grid>
