@@ -1,14 +1,15 @@
 import { Component } from "react";
-import { NavLink } from "react-router-dom";
+
 //components
 import CurrencySwitcher from "../currencySwitcher/CurrencySwitcher";
+import QuantityBadge from "../quntityBadge/QuantityBadge";
+import CategoryLinks from "./CategoryLinks";
 //styles
-import { CartIcon, Logo, Nav, NavLinks, Side, Wrapper } from "./Navbar.styles";
+import { CartIcon, Logo, Side, Wrapper } from "./Navbar.styles";
 //icons
 import logo from "../../assets/logo.svg";
 import cartIcon from "../../assets/cartIcon.svg";
 import CartOverlay from "../cartOverlay/CartOverlay";
-import QuantityBadge from "../quntityBadge/QuantityBadge";
 
 class Navbar extends Component {
   constructor(props) {
@@ -33,21 +34,10 @@ class Navbar extends Component {
 
   render() {
     const { cartIsOpened } = this.state;
+
     return (
       <Wrapper>
-        <Nav>
-          <NavLinks>
-            <li>
-              <NavLink to="/categories/all">all</NavLink>
-            </li>
-            <li>
-              <NavLink to="/categories/clothes">clothes</NavLink>
-            </li>
-            <li>
-              <NavLink to="/categories/tech">tech</NavLink>
-            </li>
-          </NavLinks>
-        </Nav>
+        <CategoryLinks />
         <Logo>
           <img src={logo} alt="logo icon" />
         </Logo>
