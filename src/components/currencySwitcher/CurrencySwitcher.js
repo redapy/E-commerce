@@ -49,11 +49,11 @@ class CurrencySwitcher extends Component {
 
   //detect a click on the document object
   componentDidMount() {
-    document.addEventListener("click", this.handleClickOutsideMenu);
+    document.addEventListener("mousedown", this.handleClickOutsideMenu);
   }
 
   componentWillUnmount() {
-    document.removeEventListener("click", this.handleClickOutsideMenu);
+    document.removeEventListener("mousedown", this.handleClickOutsideMenu);
   }
 
   render() {
@@ -62,8 +62,8 @@ class CurrencySwitcher extends Component {
     const { currencySymbol } = this.props;
     return (
       <DropdownMenu ref={this.menuref} role="menu">
-        <span>{currencySymbol}</span>
         <ToggleButton onClick={this.toggle}>
+          <span>{currencySymbol}</span>
           {isOpen ? (
             <img src={closeArrow} alt="close button" />
           ) : (
