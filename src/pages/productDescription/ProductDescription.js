@@ -45,8 +45,10 @@ class ProductDescription extends Component {
 
     // function that takes an object and then dspatch an action in order to update the redux store,
     // more specifically to update the cartItem store related to the cart.
-    const handleAddToCart = (product) => {
-      this.props.dispatch(addProduct({ ...product, quantity: 1 }));
+    const handleAddToCart = (product, inStock) => {
+      if (inStock) {
+        this.props.dispatch(addProduct({ ...product, quantity: 1 }));
+      }
     };
 
     return (
@@ -59,14 +61,17 @@ class ProductDescription extends Component {
             <ProductDetails
               onSubmit={(e) => {
                 e.preventDefault();
-                handleAddToCart({
-                  id: generateID(id, this.state),
-                  brand: product.brand,
-                  name: product.name,
-                  price: product.prices,
-                  gallery: product.gallery,
-                  attributes: this.state,
-                });
+                handleAddToCart(
+                  {
+                    id: generateID(id, this.state),
+                    brand: product.brand,
+                    name: product.name,
+                    price: product.prices,
+                    gallery: product.gallery,
+                    attributes: this.state,
+                  },
+                  product.inStock
+                );
               }}
             >
               <Brand>{product.brand}</Brand>

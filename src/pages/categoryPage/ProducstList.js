@@ -22,8 +22,10 @@ class ProducstList extends Component {
 
     // function that takes an object and then dspatch an action in order to update the redux store,
     // more specifically to update the cartItem store related to the cart.
-    const handleAddToCart = (product) => {
-      this.props.dispatch(addProduct({ ...product, quantity: 1 }));
+    const handleAddToCart = (product, inStock) => {
+      if (inStock) {
+        this.props.dispatch(addProduct({ ...product, quantity: 1 }));
+      }
     };
 
     // Because a product can't be added to a cart without attributes,
@@ -51,17 +53,20 @@ class ProducstList extends Component {
                   <img src={product.gallery[0]} alt={product.name} />
                   <CartIcon
                     onClick={() =>
-                      handleAddToCart({
-                        id: generateID(
-                          product.id,
-                          getFirstAttrs(product.attributes)
-                        ),
-                        brand: product.brand,
-                        name: product.name,
-                        price: product.prices,
-                        gallery: product.gallery,
-                        attributes: getFirstAttrs(product.attributes),
-                      })
+                      handleAddToCart(
+                        {
+                          id: generateID(
+                            product.id,
+                            getFirstAttrs(product.attributes)
+                          ),
+                          brand: product.brand,
+                          name: product.name,
+                          price: product.prices,
+                          gallery: product.gallery,
+                          attributes: getFirstAttrs(product.attributes),
+                        },
+                        product.inStock
+                      )
                     }
                   >
                     <img src={cart} alt="add to cart button" />
