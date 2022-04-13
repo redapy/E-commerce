@@ -37,15 +37,16 @@ class Carousel extends Component {
     const { index } = this.state;
     const { images, overlay } = this.props;
     const image = images[index];
+    console.log(images.length);
     return (
       <Wrapper>
-        {!overlay && (
+        {!overlay && images.length > 1 && (
           <Arrow onClick={this.moveLeft} left>
             <img src={leftArrow} alt="left arrow" />
           </Arrow>
         )}
         <Image src={image} alt="product preview" overlay={overlay} />
-        {!overlay && (
+        {!overlay && images.length > 1 && (
           <Arrow onClick={this.moveRight} right>
             <img src={rightArrow} alt="right arrow" />
           </Arrow>
