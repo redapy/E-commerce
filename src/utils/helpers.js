@@ -10,7 +10,7 @@ export const getAmount = (prices, currency) => {
   const amountArray = prices.filter((price) => {
     return price.currency.symbol === currency;
   });
-  const amount = amountArray[0].amount;
+  const amount = amountArray[0].amount.toFixed(2);
   return amount;
 };
 

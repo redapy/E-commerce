@@ -18,7 +18,7 @@ class TotalPrice extends Component {
       <Wrapper>
         <p>Total</p>
         <span>
-          {currencySymbol} {totalPrice}
+          {currencySymbol} {totalPrice.toFixed(2)}
         </span>
       </Wrapper>
     );
