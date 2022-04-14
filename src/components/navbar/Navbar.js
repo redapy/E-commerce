@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { Component, createRef } from "react";
 
 //components
 import CurrencySwitcher from "../currencySwitcher/CurrencySwitcher";
@@ -23,13 +23,20 @@ class Navbar extends Component {
     this.setState((prevState) => ({
       cartIsOpened: !prevState.cartIsOpened,
     }));
+    this.cartIconRef = createRef();
   };
 
   //function to close the cart
-  closeCart = () => {
-    this.setState({
-      cartIsOpened: false,
-    });
+  closeCart = (e) => {
+    // check that is not the cart icon. Because the cart icon already have a toggle function that set the state to the prev state.
+    // if we click on the cart icon, it count as outside the modal it will close the cart (isOpen will be false),
+    //  then the toggel function will be triggered also ans set isOpen to be true, which make the cart to close and open again.
+    //this condition makes sure that doesn't happen
+    if (this.cartIconRef && !this.cartIconRef.current.contains(e.target)) {
+      this.setState({
+        cartIsOpened: false,
+      });
+    }
   };
 
   render() {
@@ -43,7 +50,7 @@ class Navbar extends Component {
         </Logo>
         <Side>
           <CurrencySwitcher />
-          <CartIcon onClick={this.toggleCart}>
+          <CartIcon ref={this.cartIconRef} onClick={this.toggleCart}>
             <QuantityBadge />
             <img src={cartIcon} alt="cart icon" />
           </CartIcon>

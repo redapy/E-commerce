@@ -25,7 +25,7 @@ class CartOverlay extends Component {
   // check if we clicked outside of the cart overlay
   handleClickOutsideCart = (e) => {
     if (this.cartRef && !this.cartRef.current.contains(e.target)) {
-      this.props.closeCart();
+      this.props.closeCart(e);
     }
   };
   //detect click on the document
