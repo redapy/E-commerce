@@ -40,12 +40,9 @@ class CartItems extends Component {
                 <ProductPrice prices={item.price} overlay={overlay} />
                 <SelectedAttributes overlay={overlay}>
                   {Object.keys(item.attributes).map((attrKey) => (
-                    <Attribute overlay={overlay}>
+                    <Attribute key={attrKey} overlay={overlay}>
                       <span>{attrKey}</span>
-                      <li
-                        key={attrKey}
-                        style={{ background: item.attributes[attrKey] }}
-                      >
+                      <li style={{ background: item.attributes[attrKey] }}>
                         {attrKey === "Color" ? "" : item.attributes[attrKey]}
                       </li>
                     </Attribute>
